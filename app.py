@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 import os
-
+import json
 import aws_cdk as cdk
 
 from weather_data_infra.weather_data_infra_stack import WeatherDataInfraStack
 
+_CONFIG = {}
+# Load external config
+with open("stack_config.json") as json_file:
+    _CONFIG = json.load(json_file)
+
 
 app = cdk.App()
-WeatherDataInfraStack(app, "WeatherDataInfraStack",
+WeatherDataInfraStack(app, "WeatherDataInfraStack", config=_CONFIG
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.

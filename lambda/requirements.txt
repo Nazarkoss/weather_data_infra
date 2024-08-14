@@ -1,0 +1,2 @@
+openmeteo_requests==1.2.1
+pandas==2.2.2
